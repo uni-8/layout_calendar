@@ -1,3 +1,58 @@
+@use "var";
+
+html {
+  font-family: var.$font_main;
+}
+
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  @include var.calendar_width(7);
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    height: var.$box_size;
+    width: var.$box_size;
+    margin-top: var.$box_margin;
+    margin-right: var.$box_margin;
+    border: 1px solid var.$color_br;
+    background-color: var.$color_bg;
+    font-size: var.$font_size;
+
+    &:hover {
+      background-color: var.$color_bg_hover;
+      cursor: pointer;
+      transform: translateY(-20px);
+      transition: 0.5s;
+    }
+  }
+}
+
+@for $i from 1 through 31 {
+  .calendar :nth-child(#{$i}):after {
+    content: "#{$i}";
+  }
+}
+
+@each $day, $i in var.$week-days {
+  .calendar-#{$day} :first-child {
+    @include var.empty_space($i);
+  }
+}
+
+@for $i from 28 through 30 {
+  .calendar-#{$i} :nth-child(n+#{$i+1}) {
+    display: none;
+  }
 }

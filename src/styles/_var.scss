@@ -1,0 +1,26 @@
+$font_main: arial, sans-serif;
+$font_size: 30px;
+$box_size: 100px;
+$box_margin: 1px;
+$calculate: $box_size + $box_margin;
+$color_br: #000;
+$color_bg: #eee;
+$color_bg_hover: pink;
+
+@mixin calendar_width($i) {
+  width: $i * $calculate;
+}
+
+@mixin empty_space($i) {
+  margin-left: $i * $calculate;
+}
+
+$week-days: (
+  "mon": 0,
+  "tue": 1,
+  "wed": 2,
+  "thu": 3,
+  "fri": 4,
+  "sat": 5,
+  "sun": 6
+);
