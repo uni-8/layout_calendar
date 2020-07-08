@@ -28,13 +28,13 @@ body {
   border: 1px solid #000;
   background-color: #eee;
   font-size: 30px;
+  transition: background-color 0.5s, transform 0.5s;
 }
 
 .calendar div:hover {
   background-color: pink;
-  cursor: pointer;
   transform: translateY(-20px);
-  transition: 0.5s;
+  cursor: pointer;
 }
 
 .calendar :nth-child(1):after {
